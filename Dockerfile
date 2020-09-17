@@ -1,13 +1,11 @@
 FROM node
 
 # DEPS
-RUN apt-get -y update && apt-get install -y curl \
-gnupg2 \
-git
+RUN apt-get -y update && apt-get install -y curl gnupg2
 
 # PoracleJS
-RUN git clone https://github.com/KartulUdus/PoracleJS.git && cd PoracleJS && npm install
-
 WORKDIR PoracleJS
+ADD . .
+RUN npm install
 
 CMD npm start
